@@ -9,14 +9,13 @@
 <body>
 	<div>
 		<ul class="pagination">
-			
 		</ul>
 	</div>
 	<script type="text/javascript">
 		// var mynavtion=new myPageNation();
 		var mynavtion=$.myPageNation();
-		mynavtion.paginationinit(40,$('.pagination'),5);
-		$('.pagination').on('click',mynavtion.paginationievent);
+		mynavtion.pageInit(40,5);
+		$('.pagination').on('click',mynavtion.pageEvent);
 	</script>
 </body>
 </html>
