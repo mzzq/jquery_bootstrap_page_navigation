@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 	<title>bootstrap page</title>
@@ -12,10 +12,9 @@
 		</ul>
 	</div>
 	<script type="text/javascript">
-		// var mynavtion=new myPageNation();
-		var mynavtion=$.myPageNation();
-		mynavtion.pageInit(40,5);
-		$('.pagination').on('click',mynavtion.pageEvent);
+		var mynavtion=$.myPageNation(5);
+		mynavtion.pageInit(1,100);
+		console.log(mynavtion.getPageIndex());
 	</script>
 </body>
 </html>
