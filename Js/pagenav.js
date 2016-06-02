@@ -1,5 +1,5 @@
 jQuery.extend({
-    myPageNation:myPageNation
+    bjPageNation:myPageNation
 });
 function myPageNation(fn,size=10){
     var page_index,
