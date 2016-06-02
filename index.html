@@ -3,18 +3,25 @@
 <head>
 	<title>bootstrap page</title>
 	<link rel="stylesheet" type="text/css" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<style type="text/css">
+		.page{
+			text-align: center;
+		}
+	</style>
 	<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.0.0-rc1/jquery.min.js"></script>
 	<script type="text/javascript" src="Js/pagenav.js"></script>
 </head>
 <body>
-	<div>
+	<div class="page">
 		<ul class="pagination">
 		</ul>
 	</div>
 	<script type="text/javascript">
-		var mynavtion=$.myPageNation(5);
+		var mynavtion=$.myPageNation(callback,5);
 		mynavtion.pageInit(1,100);
-		console.log(mynavtion.getPageIndex());
+		function callback(){
+			mynavtion.getPageIndex();
+		}
 	</script>
 </body>
 </html>

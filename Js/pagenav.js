@@ -1,11 +1,12 @@
 jQuery.extend({
     myPageNation:myPageNation
 });
-function myPageNation(size=10){
+function myPageNation(fn,size=10){
     var page_index,
         page_total;
     var pagesize=size;
     var _first=true;
+    var _fun=fn;
     function getpageindex(){
         return page_index;
     }
@@ -29,15 +30,17 @@ function myPageNation(size=10){
         var tagname=$(e.target);
         if(tagname[0].className=='pre'){
             prepage();
+            _fun();
         }else if (tagname[0].className=='next') {
             nextpage();
+            _fun();
         }else if(tagname.text().trim()=="..."||tagname.text().trim()=="当前无任何记录"){
             return;
         }else{
             page_index=parseInt(tagname.text().trim());
             paginationinit(page_index);
+            _fun();
         }
-        console.log(getpageindex());
     }
     function computepagetotal(total){
         var _totalpage=total%pagesize;
