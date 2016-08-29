@@ -1,6 +1,9 @@
 jQuery.extend({
     bjPageNation:myPageNation
 });
+// jQuery.fn.extend({
+//     bjPageNation:myPageNation
+// });
 function myPageNation(fn,size=10){
     var page_index,
         page_total;

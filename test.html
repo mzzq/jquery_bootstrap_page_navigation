@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>bootstrap page</title>
+	<link rel="stylesheet" type="text/css" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<style type="text/css">
+		*{
+			margin:0;
+			padding: 0;
+		}
+		div{
+			text-align: center;
+		}
+		#listcontent li{
+			list-style: none;
+			line-height: 34px;
+		}
+		#listcontent li:nth-child(odd){
+			background-color: #f2822f;
+		}
+		#listcontent li:nth-child(even){
+			background-color: #0c8230;
+		}
+	</style>
+	<script type="text/javascript" src="Js/pagenav-test.js"></script>
+</head>
+<body>
+	<div>
+		<ul id='listcontent'>
+		</ul>
+	</div>
+	<div>
+		<label>总条数：</label><input type="number" name="total" value="200">
+		<label>每页条数:</label><input type="number" name="pagesize" value="10" min="1">
+		<input type="button" value="确定" id="getSize">
+	</div>
+	<div id="pagination">
+	</div>
+	<script type="text/javascript">
+		var pagesize=10,
+			totalsize=200;
+		var _content=document.getElementById('listcontent');
+		var mynavtion=new myPageNation(pagesize);
+		mynavtion.paginationinit(totalsize,getIndex);
+		function getIndex(){
+			var i=(mynavtion.getpageindex()-1)*pagesize;
+			var _maxzise=Number(i)+Number(pagesize);
+			var j=_maxzise>totalsize?totalsize:_maxzise;
+			var content="";
+			for(;i<j;i++){
+				content+='<li>'+i+'</li>';
+			}
+			_content.innerHTML=content;
+		}
+		document.getElementById('getSize').addEventListener('click',function(){
+			var _i=document.getElementsByName('total')[0].value,
+				_j=document.getElementsByName('pagesize')[0].value;
+			if(Number(_i)<Number(_j)){
+				return;
+			}
+			if(_j==0){
+				document.getElementsByName('pagesize')[0].value=1;
+				pagesize=1;
+				totalsize=_i;
+			}
+			else{
+				pagesize=_j;
+				totalsize=_i;
+			}
+			mynavtion=new myPageNation(pagesize);
+			mynavtion.paginationinit(totalsize,getIndex);
+		});
+	</script>
+</body>
+</html>
