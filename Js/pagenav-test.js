@@ -1,7 +1,7 @@
-function myPageNation(size=10){
+function myPageNation(size){
     this.page_index=1,
     this.page_total=0;
-    this.pagesize=size;
+    this.pagesize=size===undefined?10:size;
     this._first=true;
     this.paginationclass={};
     this.listen=[];
